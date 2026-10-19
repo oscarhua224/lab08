@@ -3,19 +3,10 @@ import java.util.Scanner;
 
 public class GestorEstudiantes {
     public static void insertarEstudiante(Scanner sc) {
-        System.out.print("ID: ");
-        int id = sc.nextInt();
-        sc.nextLine();
-
-        System.out.print("Nombre: ");
-        String nombre = sc.nextLine();
-
-        System.out.print("Edad: ");
-        int edad = sc.nextInt();
-        sc.nextLine();
-
-        System.out.print("Carrera: ");
-        String carrera = sc.nextLine();
+        int id = Entrada.leerEntero(sc, "ID: ", 1);
+        String nombre = Entrada.leerTexto(sc, "Nombre: ");
+        int edad = Entrada.leerEntero(sc, "Edad: ", 0);
+        String carrera = Entrada.leerTexto(sc, "Carrera: ");
 
         String sql = """
                 INSERT INTO estudiantes
@@ -69,19 +60,10 @@ public class GestorEstudiantes {
         }
     }
     public static void actualizarEstudiante(Scanner sc) {
-        System.out.print("ID del estudiante a actualizar: ");
-        int id =sc.nextInt();
-        sc.nextLine();
-
-        System.out.print("Nuevo nombre: ");
-        String nombre = sc.nextLine();
-
-        System.out.print("Nueva carrera: ");
-        String carrera = sc.nextLine();
-
-        System.out.print("Nueva edad: ");
-        int edad = sc.nextInt();
-        sc.nextLine();
+        int id = Entrada.leerEntero(sc, "ID del estudiante a actualizar: ", 1);
+        String nombre = Entrada.leerTexto(sc, "Nuevo nombre: ");
+        String carrera = Entrada.leerTexto(sc, "Nueva carrera: ");
+        int edad = Entrada.leerEntero(sc, "Nueva edad: ", 0);
 
         String sql = """
                 UPDATE estudiantes
@@ -115,9 +97,7 @@ public class GestorEstudiantes {
         }
     }
     public static void eliminarEstudiante(Scanner sc) {
-        System.out.print("ID del estudiante a eliminar: ");
-        int id = sc.nextInt();
-        sc.nextLine();
+        int id = Entrada.leerEntero(sc, "ID del estudiante a eliminar: ", 1);
 
         String sql = "DELETE FROM estudiantes WHERE id = ?";
 
